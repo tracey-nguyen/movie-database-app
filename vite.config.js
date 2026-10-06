@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
-export default defineConfig({
-  base: '/movie-database-app/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/movie-database-app/' : '/',
   plugins: [react(), tailwindcss()],
   server: {
     open: true,
@@ -14,4 +14,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+}))
